@@ -8,6 +8,9 @@
 </head>
 <body>
 
+<div style="background-image: url('../images/base.png'); height: 500px; border: 1px solid black"></div>
+
+<!-- 
 <button class="group relative px-8 py-4 bg-emerald-600 text-white font-bold rounded-xl overflow-hidden transition-all duration-300 hover:bg-emerald-700 hover:ring-4 hover:ring-emerald-200 active:scale-95 shadow-lg shadow-emerald-200">
   <span class="relative z-10 flex items-center gap-2">
     Shop Now
@@ -34,7 +37,7 @@
       Aperçu rapide
     </button>
   </div>
-</div>
+</div> -->
 
 
 <!-- <div class="relative h-64 w-full bg-[url('../images/base.png')] bg-cover bg-center">
@@ -43,5 +46,22 @@
   <h1 class="relative z-10 text-black">Mon titre sur l'image</h1>
 </div>
 <div class="h-[300px] w-[300px] shadow-[0_12px_10px_#0E0] mx-auto" style="  box-shadw: 0 12px 10px #999; "><img src="../images/site.jpg" class="object-cover" alt=""></div> -->
+
+<script>
+  let div = document.getElementsByTagName('div')[0];
+
+  let urls = ['../images/poto.jpg', '../images/base.png', '../images/petite.jpg', '../images/site.jpg'];
+  let index = 1;
+
+  function setbg(){
+    div.style.backgroundImage = "url('"+urls[index]+"')";
+    index++;
+    if(index>=urls.length){
+      index=0;
+    }
+  } 
+  setInterval(setbg, 2000);
+</script>
+
 </body>
 </html>
