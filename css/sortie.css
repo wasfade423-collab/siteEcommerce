@@ -1293,6 +1293,14 @@
       border-bottom-width: 2px;
     }
   }
+  .max-md\:bg-gray-500\/20 {
+    @media (width < 48rem) {
+      background-color: color-mix(in srgb, oklch(55.1% 0.027 264.364) 20%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-gray-500) 20%, transparent);
+      }
+    }
+  }
   .max-md\:bg-gradient-to-t {
     @media (width < 48rem) {
       --tw-gradient-position: to top in oklab;
