@@ -8,13 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..9001,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="../tailwind.css">
+    <link rel="stylesheet" href="../css/sortie.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="relative">
-
+<body>
     <header class="sticky top-0 z-50">
         <nav class="flex items-center justify-between max-lg:px-[5%] lg:px-8 py-4 bg-white/80 backdrop-blur-md border-b border-gray-100">
             <div class="flex gap-8 text-gray-700 font-medium max-lg:hidden">
@@ -35,7 +34,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.1841.707.7071.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] px-1 quantite rounded-full border-2 border-white">0</span>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] px-0.75 rounded-full border-2 border-white">0</span>
                 </button>
                 
                 <button class="p-3 bg-gray-100 text-gray-600 rounded-xl cursor-pointer hover:shadow-lg transition-all">
@@ -44,92 +43,7 @@
             </div>
         </nav>
     </header>
-    <main>
-
-        <section class="max-md:relative hero md:h-[520px] mt-1">
-            <section class="h-full max-md:absolute inset-0 max-md:bg-gradient-to-t max-md:from-white max-md:from-20% max-md:to-transparent max-md:to-70%">
-                <div class="flex md:mt-2 max-md:mr-[6%] max-md:ml-[5%] max-md:mt-[40%] flex-2">
-                    <div class="md:w-2/5 md:mt-24 md:ml-[10%] flex flex-col items-start md:justify-center">
-                        <h1 class="font-bold max-md:text-center text-4xl max-md:text-[25px]">Son pur, confort Total</h1>
-                        <span class="text-sm font-medium text-gray-500 max-md:text-black max-md:text-[10px] md:w-9/12 md:mt-1">
-                            "Découvrez une nouvelle dimension sonore avec nos écouteurs de haute qualité. 
-                            Explorez aussi notre sélection d’appareils électroniques innovants, pensés pour simplifier et enrichir votre quotidien."
-                        </span>
-                        <button class="bg-[#0A8433] px-4 py-1 text-white rounded-sm md:mt-3 max-md:mt-2 cursor-pointer text-xl">
-                            <a href="#articles">Shop now</a>
-                        </button>
-                    </div>
-                    <div class="max-md:hidden w-3/5 object-cover bg-no-repeat md:h-9/10">
-                        <img src="../images/base.png" alt="">
-                    </div>
-                </div>
-            </section>
-        </section>
-        <section id="articles" class="md:mx-[5px] max-md:mx-[1%]">
-            <h2 class="font-bold m-5 text-3xl max-md:text-2xl relative">
-                <div class="w-[80%] px-2 py-1">
-
-                    <span>Nos articles</span>
-                </div>
-
-            </h2>
-            <div class="space-x-2 mx-auto md:w-[400px]">
-                <div class="flex md:justify-center md:m-5 max-md:mx-[15%] gap-10 mt-2 justify-between">
-                    <button class="active:scale-90 bg-green-800 px-4 cursor-pointer max-md:py1 md:py-3 md:w-[200px]  text-white rounded-sm">Populaires</button>
-                    <button class="active:scale-90 border-green-800 cursor-pointer max-md:py1 px-4 md:py-3 md:w-[200px]  border text-green-800 rounded-sm">Nouveaux</button>
-                </div>     
-            </div>
-            <div class="bgarticles bg-gray-200 px-3 py-5 flex flex-wrap justify-center gap-3 mt-[30px]">
-                                                                
-            </div>
-        </section>      
-        <h2 class="font-bold text-4xl md:w-[400px]  mt-5 max-md:text-2xl relative">
-            <div class="p-1 w-[80%] px-5 py-1">
-                <span>Promotions</span>
-            </div>
-        </h2>
-        <section class="max-md:h-[180px] relative mx-auto md:w-[1000px]  my-[10%] px-2 py-1 md:max-w-[1200px] bg-[url('../images/sup.jpg')] bg-no-repeat bg-cover bg-center h-[450px] max-md:w-[90%]">
-            <span class="absolute top-0 left-0 bg-[rgba(255,0,0,0.7)] text-white text-[11px] font-extrabold px-2 py-0.5 rounded shadow-[0_0_10px_rgba(220,38,38,0.5)]">
-                PROMO
-            </span>
-            <button class="absolute border cursor-pointer rounded-sm px-1 z-10 md:top-[50px] py-1 md:right-12 max-md:py-[2px] md:right-12 max-md:right-[10px] max-md:top-[10%] bg-white text-green-800 border-green-800">Tout voir</button>
-            <div class="max-md:absolute max-md:bottom-[1%] text-white md:w-2/5 md:mt-50 md:ml-4">
-                <p class="text-xl font-medium max-md:font-light">Nom du produit</p>
-                <div class="m-0 md:text-[12px] max-md:text-[8px] max-md:w-9/12">
-                    Optimisez votre productivité avec un bureau intelligent intégrant smartphone
-                    à l’efficacité.
-                </div>
-                <div class="md:mt-5">
-                    <span class="font-bold text-lg text-red-600">1500 XOF</span><span class="line-through decoration-1 decoration-red-600 text-[12px] text-white/90">2000 XOF</span>
-                    <button class="px-4 hover:bg-green-800 py1 cursor-pointer rounded-md md:ml-10 bg-gradient-to-r from-green-800 from-50% to-green-500">
-                        Shop Now                       
-                    </button>
-                </div>
-            </div>
-        </section>
-        <section class="max-md:w-[90%] max-md:h-[180px] max-md:py-2 md:w-[1000px] md:max-w-[1200px] flex relative mx-auto md:w-[900px] my-[10%] pl-2 py-1 md:max-w-[900px] md:h-[450px]">
-            <span class="absolute top-0 left-0 bg-[rgba(255,0,0,0.7)] text-white text-[11px] font-extrabold px-2 py-0.5 rounded shadow-[0_0_10px_rgba(220,38,38,0.5)]">
-                PROMO
-            </span>
-            <div class="h-full md:w-3/5 max-md:w-1/2 max-md:pt1">
-                <img src="../images/poto.jpg" class="h-full w-full" alt="">
-            </div>
-            <button class="absolute border cursor-pointer rounded-sm px-1 z-10 md:top-[50px] py-1 md:right-12 max-md:py-[2px] md:right-12 max-md:right-[10px] max-md:top-[10px] bg-white text-green-800 border-green-800">Tout voir</button>
-            <div class="text-black md:w-2/5 max-md:mt-[10px] max-md:w-1/2 md:mt-40 md:ml-[1%]">
-                <div class="text-[12px] max-md:text-[8px] max-md:mt-[35px]">
-                    <p class="text-xl font-medium max-md:font-light max-md:">Nom du produit</p>
-                    Optimisez votre productivité avec un bureau intelligent intégrant smartphone
-                    à l’efficacité.
-                </div>
-                <span class="font-bold text-lg text-red-600">1500 XOF</span><span class="line-through decoration-1 decoration-red-600 text-[12px] text-gray-500">2000 XOF</span>
-                
-                <br>
-                <button class="text-white px-4 hover:bg-green-800 py-1 cursor-pointer rounded-md md:ml-10 bg-gradient-to-r from-green-800 from-50% to-green-500">
-                    Shop Now                       
-                </button>
-            </div>
-        </section>
-        <!--<section class="md:max-w-[1050px] mb-[5%] mt-[10%] max-md:w-screen max-md:flex-col mx-auto flex">
+<section class="md:max-w-[1050px] mb-[5%] mt-[10%] max-md:w-screen max-md:flex-col mx-auto flex">
             <div class="md:relative md:w-1/2 max-md:w-full">
                 <img src="../images/selfie.jpg" class="object-cover object-center" alt="">
                 <div class="absolute hidden flex flex-col top-20 right-1 gap-2">
@@ -169,7 +83,7 @@
                         <option value="blue">Bleu</option>
                     </select>
                     <div class="flex max-md:mt-2 gap-2 w-2/5">
-                            Lorsqu'on clique sur + ou - le signe dimunie de taille mais le nombre fait un plus et grossit
+                            <!--Lorsqu'on clique sur + ou - le signe dimunie de taille mais le nombre fait un plus et grossit-->
                         <button class="cursor-pointer active:scale-95 rounded-sm flex justify-center items-center border text-3xl border-green-800 h-[32px] w-[32px]">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
@@ -192,8 +106,7 @@
                     </button>                    
                 </div>
             </div> 
-        </section>-->
-    </main>   
+        </section>
     <footer class="pt-2 md:mt-8 max-md:flex max-md:flex-col bg-gray-500/20">
         <div class="max-md:w-screen gap-4 max-md:items-center max-md:flex-col-reverse md:pl-1%] max-md:pl-1%] pt-2 flex md:justify-between md:max-w-[80%] mx-auto">
             
@@ -259,7 +172,5 @@
         </a>      
         <p class="mt-2 text-center border-gray-800 bg-gray-800/20 pt-4 pb1">Copyright © 2025 By Wasfade Tonoukoin. All rights reserved.</p>
     </footer>
-    <script src="home.js"></script>    
 </body>
-</html> 
-
+</html>

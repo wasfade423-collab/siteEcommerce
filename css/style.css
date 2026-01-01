@@ -1,7 +1,6 @@
 @media (max-width: 768px){
 /*hero début*/
     .hero{
-        border-radius: 20px;
         background-image: url('../images/base.png');
         background-repeat: no-repeat;
         object-fit:cover;
@@ -10,14 +9,10 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        width: 100vw;
-        height: 350px;
-        margin: 0px auto;
+        height: 325px;
     }
-    .hero div{
-        width: 90%;
-        margin: 30% 6% 0px 5%;
+    .hero section{
+        margin: 10% 0px 0px 0px;
     }
-
-
 }
+video { pointer-events: none; }
