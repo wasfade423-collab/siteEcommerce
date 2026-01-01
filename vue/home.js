@@ -188,13 +188,11 @@
     }
 
 console.log(4);
-    document.addEventListener("DOMContentLoaded", () => {
+async function boutique(){
+    const response = await fetch('../controller/controller.php');
+    const articles = await response.json();
         let bgarticles = document.querySelector('.bgarticles'); //partie article 
         bgarticles.classList.add('flex','flex-wrap','gap-3','justify-center');
-        fetch('../controller/controller.php')
-            .then(response=>response.json())
-            .then(articles=>{
-
                 if (!bgarticles) return;
                 bgarticles.innerHTML = "";
     
@@ -210,36 +208,36 @@ console.log(4);
                     );
                     bgarticles.appendChild(article);
                 });
-            })    
-        let quantite = document.querySelector('.quantite');
-        let nbreDequantite = 0;
-        
-        let checks=document.querySelectorAll('.check');
-        checks.forEach(check=>{
-            check.classList.add('cursor-pointer');
-            check.addEventListener('click', ()=>{
-                check.classList.toggle('valid');
-                if(check.classList.contains('valid')){
-                    check.style.backgroundColor='green';
-                    check.innerHTML = "";
-                    check.innerHTML= "<img src='../images/afterpaye.png'>";
-                    nbreDequantite++;
-                    console.log(nbreDequantite);
-                    quantite.innerHTML = nbreDequantite;                    
-                    
-                }else{
-                    check.style.backgroundColor='transparent';
-                    check.innerHTML = "";
-                    check.innerHTML= "<img src='../images/add-to-cart.png'>";        
-                    nbreDequantite--;                                
-                    console.log(nbreDequantite);
-                    quantite.innerHTML = nbreDequantite;
-                }
-            })
-        })
+            let quantite = document.querySelector('.quantite');
+            let nbreDequantite = 0;
+            let checks=document.querySelectorAll('.check');
+            console.log(checks);
+            checks.forEach(check=>{
+                check.classList.add('cursor-pointer');
+                check.addEventListener('click', ()=>{
+                    check.classList.toggle('valid');
+                    if(check.classList.contains('valid')){
+                        check.style.backgroundColor='green';
+                        check.innerHTML = "";
+                        check.innerHTML= "<img src='../images/afterpaye.png'>";
+                        nbreDequantite++;
+                        console.log(nbreDequantite);
+                        quantite.innerHTML = nbreDequantite;                    
+                        
+                    }else{
+                        check.style.backgroundColor='transparent';
+                        check.innerHTML = "";
+                        check.innerHTML= "<img src='../images/add-to-cart.png'>";        
+                        nbreDequantite--;                                
+                        console.log(nbreDequantite);
+                        quantite.innerHTML = nbreDequantite;
+                    }
+                })   
+            }) 
+}
+    document.addEventListener("DOMContentLoaded", boutique());
 // console.log(bgarticles);
 // console.log(articles);
-    });
 
 
 
