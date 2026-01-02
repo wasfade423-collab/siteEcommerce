@@ -75,8 +75,8 @@
             </h2>
             <div class="space-x-2 mx-auto md:w-[400px]">
                 <div class="flex md:justify-center md:m-5 max-md:mx-[15%] gap-10 mt-2 justify-between">
-                    <button class="active:scale-90 bg-green-800 px-4 cursor-pointer max-md:py1 md:py-3 md:w-[200px]  text-white rounded-sm">Populaires</button>
-                    <button class="active:scale-90 border-green-800 cursor-pointer max-md:py1 px-4 md:py-3 md:w-[200px]  border text-green-800 rounded-sm">Nouveaux</button>
+                    <button class="active:scale-90 bg-green-800 px-4 cursor-pointer max-md:py1 md:py-3 md:w-[200px]  text-white rounded-sm" onclick="boutique('nouveau')">Nouveau</button>
+                    <button class="active:scale-90 border-green-800 cursor-pointer max-md:py1 px-4 md:py-3 md:w-[200px]  border text-green-800 rounded-sm" onclick="boutique('populaire')">Populaire</button>
                 </div>     
             </div>
             <div class="bgarticles bg-gray-200 px-3 py-5 flex flex-wrap justify-center gap-3 mt-[30px]">
@@ -254,12 +254,12 @@
                 </div>
             </div>              
         </div>  
-        <a href="#" class="fixed right-4 bottom-0 bg-green-300 inline-block px-3 py1 md:px-4 md:py-2 rounded-md text-lg z-50 hover:-translate-y1 shadow-sm duration-300" id="scroll-up">  
+        <a href="#" class="fixed right-4 bottom-0 bg-green-300 inline-block px-3 py1 md:px-4 md:py-2 rounded-md text-lg z-50 hover:-translate-y-1 shadow-sm duration-300" id="scroll-up">  
             <i class="fa-solid fa-arrow-up"></i>
         </a>      
         <p class="mt-2 text-center border-gray-800 bg-gray-800/20 pt-4 pb1">Copyright © 2025 By Wasfade Tonoukoin. All rights reserved.</p>
     </footer>
-    <script src="home.js"></script>    
+    <script src="../js/home.js"></script>    
 </body>
 </html> 
 

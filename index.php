@@ -1,5 +1,3 @@
 <?php
-    // include_once('controller/controller.php');
-    // $index = new Controller();
-    // $index->invoke();
+    include_once('controller/controllerVue.php');
 ?>

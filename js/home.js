@@ -188,8 +188,8 @@
     }
 
 console.log(4);
-async function boutique(){
-    const response = await fetch('../controller/controller.php');
+async function boutique(categorie="nouveau"){
+    const response = await fetch('../controller/controller.php?categorie='+categorie+'');
     const articles = await response.json();
         let bgarticles = document.querySelector('.bgarticles'); //partie article 
         bgarticles.classList.add('flex','flex-wrap','gap-3','justify-center');
@@ -211,7 +211,6 @@ async function boutique(){
             let quantite = document.querySelector('.quantite');
             let nbreDequantite = 0;
             let checks=document.querySelectorAll('.check');
-            console.log(checks);
             checks.forEach(check=>{
                 check.classList.add('cursor-pointer');
                 check.addEventListener('click', ()=>{

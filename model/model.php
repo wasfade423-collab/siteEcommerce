@@ -4,10 +4,10 @@
         public function __construct(){
             $this->database = new PDO('mysql:host=localhost;dbname=sitecommerce;charset=utf8', 'root','');
         }
-        public function getArticles(){
-            $query= "SELECT * FROM produits";
+        public function getArticles($categorie){
+            $query= "SELECT * FROM produits WHERE status = :categorie";
             $stmt=$this->database->prepare($query);
-            if($stmt->execute()){
+            if($stmt->execute(['categorie'=>$categorie])){
                 $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             return $articles;
