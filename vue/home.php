@@ -10,16 +10,16 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="../tailwind.css">
+    <link rel="stylesheet" href="../css/sortie.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="relative">
+<body class="relative overflow-x-hidden">
 
     <header class="sticky top-0 z-50">
         <nav class="flex items-center justify-between max-lg:px-[5%] lg:px-8 py-4 bg-white/80 backdrop-blur-md border-b border-gray-100">
-            <div class="flex gap-8 text-gray-700 font-medium max-lg:hidden">
+            <div class="flex navigation max-md:flex-col gap-8 text-gray-700 max-md:absolute z-10 transition-all duration-500 top-0 -translate-x-100 max-md:bg-white max-md:w-3/4  font-medium">
                 <a href="#" class="hover:text-emerald-500 transition-colors duration-300">Home</a>
-                <a href="#" class="hover:text-emerald-500 transition-colors duration-300">Shop</a>
+                <a href="#articles" class="hover:text-emerald-500 transition-colors duration-300">Shop</a>
                 <a href="#" class="hover:text-emerald-500 transition-colors duration-300">Contact</a>
             </div>
 
@@ -27,19 +27,19 @@
                 <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </span>
-                <input type="text" placeholder="Rechercher un produit..." class="w-full pl-10 pr-4 py-2 bg-gray-100 border-none rounded-full focus:ring-2 focus:ring-emerald-400 focus:bg-white transition-all outline-none text-sm">
+                <input type="text" placeholder="Rechercher un produit..." class="w-full searchBar pl-10 pr-4 py-2 bg-gray-100 border-none rounded-full focus:ring-2 focus:ring-emerald-400 focus:bg-white transition-all outline-none text-sm">
             </div>
 
-            <div class="flex gap-4">
-                <button class="relative p-3 bg-emerald-100 text-emerald-600 rounded-xl hover:bg-emerald-500 duration-300 cursor-pointer hover:text-white transition-all shadow-sm">
+            <div class="flex gap-4 items-center">
+                <button class="panier relative p-3 bg-emerald-100 text-emerald-600 rounded-xl hover:bg-emerald-500 duration-300 cursor-pointer hover:text-white transition-all shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.1841.707.7071.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] px-1 quantite rounded-full border-2 border-white">0</span>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] px-1 quantite rounded-full border-2 border-white">0</span>
                 </button>
                 
-                <button class="p-3 bg-gray-100 text-gray-600 rounded-xl cursor-pointer hover:shadow-lg transition-all">
-                    <img src="../images/engineer.png" class="w-7 h-7">
+                <button class="p-3 burger bg-gray-100 text-3xl font-bold rounded-xl cursor-pointer hover:shadow-lg transition-all">
+                    &equiv;
                 </button>
             </div>
         </nav>
@@ -65,30 +65,40 @@
                 </div>
             </section>
         </section>
-        <section id="articles" class="md:mx-[5px] max-md:mx-[1%]">
+        <section id="articles" class="md:mx-[5px] max-md:mx-[1%]">         
             <h2 class="font-bold m-5 text-3xl max-md:text-2xl relative">
-                <div class="w-[80%] px-2 py-1">
+                <div class="w-[80%]">
 
-                    <span>Nos articles</span>
+                    <span>Nouvels Arrivages</span>
                 </div>
 
             </h2>
-            <div class="space-x-2 mx-auto md:w-[400px]">
-                <div class="flex md:justify-center md:m-5 max-md:mx-[15%] gap-10 mt-2 justify-between">
-                    <button class="active:scale-90 bg-green-800 px-4 cursor-pointer max-md:py1 md:py-3 md:w-[200px]  text-white rounded-sm" onclick="boutique('nouveau')">Nouveau</button>
-                    <button class="active:scale-90 border-green-800 cursor-pointer max-md:py1 px-4 md:py-3 md:w-[200px]  border text-green-800 rounded-sm" onclick="boutique('populaire')">Populaire</button>
-                </div>     
-            </div>
             <div class="bgarticles bg-gray-200 px-3 py-5 flex flex-wrap justify-center gap-3 mt-[30px]">
                                                                 
             </div>
-        </section>      
-        <h2 class="font-bold text-4xl md:w-[400px]  mt-5 max-md:text-2xl relative">
-            <div class="p-1 w-[80%] px-5 py-1">
-                <span>Promotions</span>
+        </section>  
+        <section>          
+            <h2 class="font-bold text-4xl md:w-[400px]  m-5 max-md:text-2xl relative">
+                <div class="w-[80%]">
+                    <span>Limités</span>
+                </div>
+            </h2>
+            <div class="bgarticles bg-gray-200 px-3 py-5 flex flex-wrap justify-center gap-3 mt-[30px]">
+                                                                
             </div>
-        </h2>
-        <section class="max-md:h-[180px] relative mx-auto md:w-[1000px]  my-[10%] px-2 py-1 md:max-w-[1200px] bg-[url('../images/sup.jpg')] bg-no-repeat bg-cover bg-center h-[450px] max-md:w-[90%]">
+        </section>    
+        <section class="mb-5">
+           
+            <h2 class="font-bold text-4xl md:w-[400px]  m-5 max-md:text-2xl relative">
+                <div class="w-[80%]">
+                    <span>Populaires</span>
+                </div>
+            </h2>
+            <div class="bgarticles bg-gray-200 px-3 py-5 flex flex-wrap justify-center gap-3 mt-[30px]">
+                                                                
+            </div>
+        </section>  
+        <!-- <section class="max-md:h-[180px] relative mx-auto md:w-[1000px]  my-[10%] px-2 py-1 md:max-w-[1200px] bg-[url('../images/sup.jpg')] bg-no-repeat bg-cover bg-center h-[450px] max-md:w-[90%]">
             <span class="absolute top-0 left-0 bg-[rgba(255,0,0,0.7)] text-white text-[11px] font-extrabold px-2 py-0.5 rounded shadow-[0_0_10px_rgba(220,38,38,0.5)]">
                 PROMO
             </span>
@@ -106,8 +116,8 @@
                     </button>
                 </div>
             </div>
-        </section>
-        <section class="max-md:w-[90%] max-md:h-[180px] max-md:py-2 md:w-[1000px] md:max-w-[1200px] flex relative mx-auto md:w-[900px] my-[10%] pl-2 py-1 md:max-w-[900px] md:h-[450px]">
+        </section> -->
+        <!-- <section class="max-md:w-[90%] max-md:h-[180px] max-md:py-2 md:w-[1000px] md:max-w-[1200px] flex relative mx-auto md:w-[900px] my-[10%] pl-2 py-1 md:max-w-[900px] md:h-[450px]">
             <span class="absolute top-0 left-0 bg-[rgba(255,0,0,0.7)] text-white text-[11px] font-extrabold px-2 py-0.5 rounded shadow-[0_0_10px_rgba(220,38,38,0.5)]">
                 PROMO
             </span>
@@ -128,7 +138,7 @@
                     Shop Now                       
                 </button>
             </div>
-        </section>
+        </section> -->
         <!--<section class="md:max-w-[1050px] mb-[5%] mt-[10%] max-md:w-screen max-md:flex-col mx-auto flex">
             <div class="md:relative md:w-1/2 max-md:w-full">
                 <img src="../images/selfie.jpg" class="object-cover object-center" alt="">
