@@ -264,7 +264,7 @@
                 </div>
             </div>              
         </div>  
-        <a href="#" class="fixed right-4 bottom-0 bg-green-300 inline-block px-3 py1 md:px-4 md:py-2 rounded-md text-lg z-50 hover:-translate-y-1 shadow-sm duration-300" id="scroll-up">  
+        <a href="#" class="fixed right-4 hidden bg-green-300 inline-block px-3 py1 md:px-4 md:py-2 rounded-md text-lg z-50 hover:-translate-y-1 shadow-sm duration-300" id="scroll-up">  
             <i class="fa-solid fa-arrow-up"></i>
         </a>      
         <p class="mt-2 text-center border-gray-800 bg-gray-800/20 pt-4 pb1">Copyright © 2025 By Wasfade Tonoukoin. All rights reserved.</p>

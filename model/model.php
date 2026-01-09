@@ -11,6 +11,14 @@
                 $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             return $articles;
+        } 
+        public function getArticle($id){
+            $query = "SELECT * FROM produits WHERE id= :id";
+            $stmt = $this->database->prepare($query);
+            if($stmt->execute(['id'=>$id])){
+                $article = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+                return $article;
+            }
         }  
     }
 ?>

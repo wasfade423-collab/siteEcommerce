@@ -3,7 +3,6 @@ let burger = document.querySelector('.burger');
 let nav = document.querySelector('.navigation');
 let etat = true;
 burger.addEventListener('click', ()=>{
-    console.log(3);
     nav.classList.toggle('-translate-x-100');
     if(etat){
         burger.innerHTML = "&times;";
@@ -17,7 +16,7 @@ burger.addEventListener('click', ()=>{
     let hero = document.getElementsByClassName('hero')[0];
     let urls = ['../images/gale.png','../images/base.png'];
     let index = 0;
-//vareur bg
+//varieur bg
     function varieur(){
         hero.style.backgroundImage = "url('"+urls[index]+"";
         index++;
@@ -34,11 +33,11 @@ burger.addEventListener('click', ()=>{
     const  scrollup = ()=>{
         const btn = document.getElementById('scroll-up');
         if(scrollY>=0){
-            btn.classList.remove('bottom-0');
+            btn.classList.remove('hidden');
             btn.classList.add('bottom-2');
         }else{
             btn.classList.remove('bottom-2');
-            btn.classList.add('bottom-0');
+            btn.classList.add('hidden');
 
         }
     }
@@ -50,7 +49,7 @@ burger.addEventListener('click', ()=>{
 //divbulder
     function articleBulder(id, status, cartImg, cartName, nbreyellow,nbreboth, nbrevide, prix){
         let div= document.createElement('article');
-        div.className='cursor-pointer article hover:shadow-2xl hover:scale-105 mb-[10px] bg-gray-500/10 transition-all duration-300  md:w-1/6 max-md:basis-[45%] relative rounded-t-md';
+        div.className='article hover:shadow-2xl hover:scale-105 mb-[10px] bg-gray-500/10 transition-all duration-300  md:w-1/6 max-md:basis-[45%] relative rounded-t-md';
         let numero=document.createElement('i');
         numero.innerHTML = id;
         numero.className = 'hidden';
@@ -75,7 +74,7 @@ burger.addEventListener('click', ()=>{
         divfil1.className='bg-gray-500/20 w-full rounded-t-[15px] p-2';
         let img = document.createElement('img'); 
         img.src =cartImg;
-        img.className = "w-full h-[150px] object-cover bg-gray-300"; 
+        img.className = "image w-full h-[150px] object-cover bg-gray-300"; 
         img.alt = "Chargement...";
         divfil1.insertAdjacentElement('afterbegin', img);
         div.insertAdjacentElement('beforeend', divfil1)//insertionde l'image
@@ -114,7 +113,7 @@ burger.addEventListener('click', ()=>{
         divfil3.className='max-md:flex flex md:gap-20 max-md:gap-[8px] max-md:items-center justify-between'
         let span2 = document.createElement('span');
         span2.className='md:mt-2 max-md:text-[15px]';
-        span2.innerHTML = prix+"XOF";
+        span2.innerHTML = prix+" XOF";
         divfil3.insertAdjacentElement('beforeend', span2);  
         let btn = document.createElement('button');
         btn.className='relative check rounded-full border md:p-2 max-md:p-1 md:w-[40px] md:h-[40px] max-md:w-[25px] max-md:h-[25px]'
@@ -129,7 +128,12 @@ burger.addEventListener('click', ()=>{
     }
 //affichage
 let disponibles = ['nouveau', 'limité', 'populaire'];
-let acheters = [];
+let acheters =  localStorage.getItem('acheters') != null ? JSON.parse(localStorage.getItem('acheters')) : [];
+//on prend le nombre d'achats
+let quantite = document.querySelector('.quantite');
+quantite.innerHTML  = localStorage.getItem('nbreDequantite') != null ? parseInt(localStorage.getItem('nbreDequantite')) : 0;
+console.log(quantite.innerHTML);
+console.log(acheters);
 async function boutique(categorie){
     let bgarticles = document.querySelectorAll('.bgarticles');
     for(index = 0; index<bgarticles.length; index++){
@@ -154,10 +158,19 @@ async function boutique(categorie){
                             item.id
                         );
                         bgarticles[index].appendChild(article);
+                        if(acheters.length>0){
+                            let position = acheters.findIndex(acheter => acheter.nom == item.cartName && acheter.prix == item.prix)
+                            if(position != -1){
+                                let check = article.querySelector('.check');
+                                check.classList.add('cursor-pointer', 'valid');
+                                check.style.backgroundColor='green';
+                                check.innerHTML = "";
+                                check.innerHTML= "<img src='../images/afterpaye.png'>";                                
+                            }
+                        }
                     });
     }
-            let quantite = document.querySelector('.quantite');
-            let nbreDequantite = Number(quantite.innerHTML);
+            let nbreDequantite = parseInt(quantite.innerHTML);
             let checks=document.querySelectorAll('.check');
             checks.forEach(check=>{
                 check.classList.add('cursor-pointer');
@@ -175,7 +188,11 @@ async function boutique(categorie){
                         //console.log(nbreDequantite);
                         quantite.innerHTML = nbreDequantite;        
                         acheters.push({'nom':h3,'prix':prix, 'quantite':nbreVoulu});
-                        //console.log(acheters);
+                        localStorage.setItem('acheters', JSON.stringify(acheters));
+                        localStorage.setItem('nbreDequantite', quantite.innerHTML);
+                        console.log(localStorage.getItem('nbreDequantite')); 
+                        console.log(JSON.parse(localStorage.getItem('acheters')));                    
+                        console.log(acheters);
                     }else{
                         check.style.backgroundColor='transparent';
                         check.innerHTML = "";
@@ -186,19 +203,31 @@ async function boutique(categorie){
                         let index = acheters.findIndex(item=> item.nom === h3 && item.prix === prix && item.quantite == nbreVoulu);
                         if(index !==-1){
                             acheters.splice(index, 1);
-                            //console.log(acheters);
+                            localStorage.setItem('acheters', JSON.stringify(acheters));
+                            localStorage.setItem('nbreDequantite', quantite.innerHTML);
+                            console.log(localStorage.getItem('nbreDequantite'));
+                            console.log(JSON.parse(localStorage.getItem('acheters')));
+                            console.log(acheters);
                         }
                     }
                 })   
             }) 
+            localStorage.setItem('acheters', JSON.stringify(acheters));
+            let images = document.querySelectorAll('.image');
+            images.forEach(image=>{
+                image.addEventListener('click',()=>{
+                    let parent = image.closest('article');                     
+                    let number = parseInt(parent.querySelector('i').textContent);
+                    window.location.href = "?id="+number;
+                    
+                })
+            }) 
 }
 document.addEventListener("DOMContentLoaded", boutique("nouveau"));
 
-
-//comprotement quad la personne recherche du contenu.
+//comprotement quand la personne recherche du contenu.
 let searchBar = document.querySelector('.searchBar');
 let bgarticles = document.querySelectorAll('.bgarticles');
-
 searchBar.addEventListener('input', () => {
 
     let valeur = searchBar.value.toLowerCase().trim();
@@ -242,21 +271,6 @@ searchBar.addEventListener('input', () => {
     });
 });
  
-
-//formulation du message pour whatsapp au click de panier Vert
-// let quantite = document.querySelector('.quantite');
-// let body = document.getElementsByTagName('body')[0];
-// panier.addEventListener('click', ()=>{
-//     let divDeConfirmation = document.createElement('div');
-//     divDeConfirmation.className = 'rounded-lg z-1000 absolute bg-green-400 px-2 py-1 min-h-[300px] min-w-[300px] flex justify-center items-center font-medium';
-//     if(parseInt(quantite.textContent) == 0){
-//         divDeConfirmation.innerHTML = "Vous n'avez aucun achat...";
-//     }else{
-
-//     }
-//     body.insertAdjacentElement('afterbegin', divDeConfirmation);
-// })
-
 document.querySelector(".panier").addEventListener("click", () => {
 //console.log('panier');
     if (acheters.length === 0) {
@@ -284,7 +298,7 @@ document.querySelector(".panier").addEventListener("click", () => {
     let encodedMessage = encodeURIComponent(message);
 
     // Numéro WhatsApp (sans + ni espaces , ni 01)
-    let numeroDeTelephone = "22994853019";
+    let numeroDeTelephone = "22943847968";
 
     // Ouverture WhatsApp
     window.open(
@@ -292,11 +306,16 @@ document.querySelector(".panier").addEventListener("click", () => {
         "_blank"
     );
 });
+//comment faire en sorte que un href ramène à un niveau precis donné
+//comment faire pour que la flèche vient que si l'on défile de 1+0.5 height
 
-let articles = document.querySelectorAll('.article');
-articles.forEach(article=>{
-    article.addEventListener('click',()=>{
-        article.classList.add('bg-red-500');
-        console.log(4);
-    })
-})   
+
+
+
+
+
+
+
+
+
+
