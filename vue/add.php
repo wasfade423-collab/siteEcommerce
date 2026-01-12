@@ -8,12 +8,12 @@
 </head>
 <body>
         <?php
-            if(isset($_SESSION['message'])){
-                echo "<div>".htmlspecialchars($_SESSION['message'])."</div>";
-                unset($_SESSION['message']);
-            }
+            if(isset($_message)){
+                echo "<div>".htmlspecialchars($message)."</div>";
+                unset($message);
+            }""
         ?>
-    <form action="../controller/controllerAdmin.php?add=add" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
         <!--nom-->
         <label for="nom">Nom du produit</label>
         <input type="text" id="nomP" name="nomP" placeholder="Nom du produit">
@@ -46,11 +46,66 @@
         <textarea name="description" id="description" rows="2" style="resize: vertical;"></textarea>
 
         <!--couleur-->
-        <label for="color">Les couleurs disponibles</label>
+        <div class="p-4 border rounded-lg bg-gray-50">
+            <label class="block mb-2 font-bold text-gray-700">Couleurs disponibles :</label>
+            
+            <div id="liste-checkbox-couleurs" class="grid grid-cols-2 gap-2 mb-4">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" name="couleurs[]" value='{"nom":"Noir","value":"black"}' class="w-4 h-4">
+                    <span>Noir</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" name="couleurs[]" value='{"nom":"Blanc","value":"white"}' class="w-4 h-4">
+                    <span>Blanc</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" name="couleurs[]" value='{"nom":"Rouge","value":"red"}' class="w-4 h-4">
+                    <span>Rouge</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" name="couleurs[]" value='{"nom":"Bleu","value":"blue"}' class="w-4 h-4">
+                    <span>Bleu</span>
+                </label>
+            </div>
+
+            <div class="flex gap-2 border-t pt-4">
+                <input type="text" id="new-color-name" placeholder="Nom (ex: Argent)" class="border p-1 text-sm rounded w-full">
+                <input type="color" id="new-color-value" class="h-8 w-12 cursor-pointer">
+                <button type="button" onclick="ajouterCouleurManuelle()" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600">
+                    + Ajouter
+                </button>
+            </div>
+        </div>
 
         <!--image-->
         <input type="file" name="cartImg" id="img">
         <input type="submit" value="Valider">
     </form>
+    <script>
+        function ajouterCouleurManuelle() {
+        const nom = document.getElementById('new-color-name').value;
+        const valeur = document.getElementById('new-color-value').value;
+        const conteneur = document.getElementById('liste-checkbox-couleurs');
+
+    if (nom.trim() === "") {
+        alert("Donnez un nom à la couleur");
+        return;
+    }
+
+    // On crée l'objet JSON comme pour les autres
+    const objetCouleur = JSON.stringify({ nom: nom, value: valeur });
+
+    const div = document.createElement('label');
+    div.className = "flex items-center gap-2 cursor-pointer animate-pulse";
+    div.innerHTML = `
+        <input type="checkbox" name="couleurs[]" value='${objetCouleur}' checked class="w-4 h-4">
+        <span class="font-semibold text-blue-600">${nom}</span>
+        <div class="w-3 h-3 rounded-full" style="background-color: ${valeur}"></div>
+    `;
+
+    conteneur.appendChild(div);
+    document.getElementById('new-color-name').value = ""; // Reset
+}
+    </script>
 </body>
 </html>

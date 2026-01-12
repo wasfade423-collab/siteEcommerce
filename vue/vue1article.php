@@ -44,7 +44,7 @@
             </div>
         </nav>
     </header>
-    <section id="section" class="md:max-w-[1050px] mb-[5%] mt-[10%] max-md:w-screen max-md:flex-col mx-auto flex">
+    <section id="section" class="md:max-w-[1050px] mb-[5%] mt-[10%] max-md:w-screen max-md:flex-col gap-4 justify-center items-center mx-auto flex">
     
     </section>
 <footer class="pt-2 md:mt-8 max-md:flex max-md:flex-col bg-gray-500/20">

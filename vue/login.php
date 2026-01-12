@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../css/sortie.css">
 </head>
 <body>
-    <form action="../controller/controllerAdmin.php?admin=me" method="post" class="flex flex-col">
+    <form action="" method="post" class="flex flex-col">
         <?php
-            if(isset($_SESSION['error_connect'])){
-                echo "<div>".htmlspecialchars($_SESSION['error_connect'])."</div>";
-                unset($_SESSION['error_connect']);
+            if(isset($echec)){
+                echo "<div>".htmlspecialchars($echec)."</div>";
+                unset($echec);
             }
         ?>
         <label for="nom">

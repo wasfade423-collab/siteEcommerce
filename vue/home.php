@@ -65,7 +65,7 @@
                 </div>
             </section>
         </section>
-        <section id="articles" class="md:mx-[5px] max-md:mx-[1%]">         
+        <section id="articles" class="md:mx-[5px]  max-md:mx-[1%]">         
             <h2 class="font-bold m-5 text-3xl max-md:text-2xl relative">
                 <div class="w-[80%]">
 
@@ -94,7 +94,7 @@
                     <span>Populaires</span>
                 </div>
             </h2>
-            <div class="bgarticles bg-gray-200 px-3 py-5 flex flex-wrap justify-center gap-3 mt-[30px]">
+            <div class="bgarticles  bg-gray-200 px-3 py-5 flex flex-wrap justify-center gap-3 mt-[30px]">
                                                                 
             </div>
         </section>  

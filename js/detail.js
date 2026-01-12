@@ -30,16 +30,16 @@ burger.addEventListener('click', ()=>{
 let section = document.getElementById('section');
 function detailBulder(id, cartImg, cartName, nbreyellow,nbreboth, nbrevide, courteDescription, prix, lescouleurs){
     let div1 =document.createElement('div');
-    div1.className = "md:relative md:w-1/2 max-md:w-full";
+    div1.className = "md:relative md:w-1/2 max-md:w-9/10";
     let img = document.createElement('img');
-    img.src = cartImg;
-    img.className= "object-cover object-center";
+    img.src = '../imagesuploade/'+cartImg;
+    img.className= "object-cover object-center w-full";
     div1.insertAdjacentElement('beforeend', img);
     
     section.insertAdjacentElement('beforeend', div1);    
     //second div de la section
     let div2 = document.createElement('div');
-    div2.className = "md:w-1/2 p-2 flex flex-col gap-2";
+    div2.className = "md:w-1/2 md:p-2 max-md:w-9/10 flex flex-col gap-2";
 
     //nom et stars
     let h3 = document.createElement('h3');
@@ -111,6 +111,7 @@ function detailBulder(id, cartImg, cartName, nbreyellow,nbreboth, nbrevide, cour
     //si lescouleurs n'est pas un JSON on le transforme en JSON sinon on le garde 
     couleursArray = typeof lescouleurs === 'string' ? JSON.parse(lescouleurs) : lescouleurs;
     couleursArray.forEach(couleur=>{
+        couleur = JSON.parse(couleur);
         let option = document.createElement('option');
         option.value = couleur.value;
         option.text =  couleur.nom;
@@ -164,35 +165,42 @@ let acheters = localStorage.getItem('acheters') != null ? JSON.parse(localStorag
 let index = document.getElementById('index').value;
 let montantT = 0; 
 async function boutique(){
-        const response = await fetch('../controller/controller.php?id='+index+'');
+        const response = await fetch('?see='+index+'');
         const article = await response.json();
         detailBulder(article.id, article.cartImg, article.cartName, article.nbreyellow, article.nbreboth, article.nbrevide, article.courteDescription, article.prix, article.lescouleurs);
             let moins = document.querySelector('.moins');
             let plus = document.querySelector('.plus');
             let combienecrit = document.querySelector('.combien');
-            let combien = parseInt(document.querySelector('.combien').textContent);
+            let combien = parseInt(document.querySelector('.combien').textContent)>=0 ? parseInt(document.querySelector('.combien').textContent) : 0;
             let nbreDequantite = parseInt(quantite.innerHTML);
             moins.addEventListener('click', ()=>{
                 if(combien>0){
                     combien--;
-                    combienecrit.innerHTML = combien;
+                    combienecrit.innerHTML = combien >=0 ? combien : 0;
                 }
             })
             plus.addEventListener('click', ()=>{
                 combien++;
-                combienecrit.innerHTML = combien;
+                combienecrit.innerHTML = combien >=0 ? combien : 0;
             })
             document.querySelector('.valid').addEventListener('click', ()=>{
                 if(combien === 0){
                     alert('Vous essayez d\'ajouter 0 article!');
                 }else{
                     nbreDequantite += combien;
-                    console.log(nbreDequantite);
+                    //console.log(nbreDequantite);
+                    let defaut = "couleur présentée";
+                    let options = document.querySelectorAll('option');
+                    options.forEach(option=>{
+                        if(option.value !="" && option.selected === true){
+                            defaut = option.text;
+                        }
+                    }) 
                     quantite.innerHTML = nbreDequantite;
                     localStorage.setItem('nbreDequantite', nbreDequantite);
-                    acheters.push({"nom": article.cartName, "prix": article.prix, "quantite": combien})
-                    console.log(montantT);
-                    console.log(acheters);
+                    acheters.push({"nom": article.cartName, "prix": article.prix, "quantite": combien, 'couleur': defaut})
+                    // console.log(montantT);
+                    // console.log(acheters);
                     localStorage.setItem('acheters', JSON.stringify(acheters));
                     
                 }
@@ -217,13 +225,14 @@ document.querySelector(".panier").addEventListener("click", () => {
 
         message += `${index + 1}. ${item.nom}\n`;
         message += `   Quantité : ${item.quantite}\n`;
+        message += `   Couleur : ${item.couleur}\n`;
         message += `   Prix : ${item.prix} XOF\n`;
         message += `   Sous-total : ${subTotal} XOF\n\n`;
     });
-    console.log(total);
+    //console.log(total);
     message += `*Total à payer : ${total} XOF*\n\n`;
     message += "C'est quoi la prochaine étape?";
-
+    // console.log(message);
     // Encodage du message pour l’URL
     let encodedMessage = encodeURIComponent(message);
 
