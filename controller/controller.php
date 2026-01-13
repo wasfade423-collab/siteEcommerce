@@ -18,8 +18,9 @@ class Compteur{
             $articles = $model->getArticles($categorie);
             header('Content-Type:application/json');
             echo(json_encode($articles));
+            exit();
                     // var_dump($articles);
-        }      
+        } 
         if(isset($_GET['id']) && $_GET['id'] != ''){
             include('vue/vue1article.php');
         }
@@ -199,7 +200,7 @@ class Compteur{
                     $informations = $model->connect();
                     if($nom === $informations['nom'] && $pass === $informations['pass']){
                         $_SESSION['admin'] = "true";
-                        echo $cpt = $model->getVisitor();
+                        $cpt = $model->getVisitor();
                         $articles['nouveau'] = $model->getArticles('nouveau');
                         $articles['populaire'] = $model->getArticles('populaire');
                         $articles['limité'] = $model->getArticles('limité');

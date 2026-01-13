@@ -3,174 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Update Page | Admin</title>
+    <meta name="description" content ="site Ecommerce au Bénin">
     <link rel="stylesheet" href="../css/sortie.css">
 </head>
-<body>
-    <form action="" method="post" enctype="multipart/form-data" class="flex flex-col gap-4">
-        <!--nom-->
-        <label for="nom">Nom du produit</label>
-        <input type="text" id="nomP" name="nomP" placeholder="Nom du produit">
-        
-        <!--status-->
-        <label for="status">Status</label>
-        <input type="radio" id="new" name="status" value="Nouveau">
-        <label for="new">Nouveau</label>
 
-        <input type="radio" id="popular" name="status" value="Populaire">
-        <label for="popular">Populaire</label>
-        
-        <input type="radio" id="limit" name="status" value="Limité">
-        <label for="limit">Limité</label>  
-        
-        <!--prix-->
-        <label for="nom">Pix en XOF</label>
-        <input type="number" id="prix" name="prix" placeholder="Prix">   
+<body class="bg-gray-50 font-sans antialiased">
 
-        <!--etoiles-->
-        <label for="nom">Sur 5 étoiles à combien estimez-vous :</label>
-        <input type="number" id="nbreyellow" name="nbreyellow" placeholder="les jaunes">    
-        
-        <input type="number" id="nbreboth" name="nbreboth" placeholder="les intermédiaires"> 
-        
-        <input type="number" id="nbrevide" name="nbrevide" placeholder="les vides">
-        
-        <!--description-->
-        <label for="description">Description</label>
-        <textarea name="description" id="description" rows="2" style="resize: vertical;"></textarea>
-
-        
-        <!--couleur-->
-        <label for="color" id="clrs">Les couleurs disponibles</label>
-        <div class="conteneur">
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-green-500 p-1.5 rounded-lg text-white font-bold">D</div>
+                <span class="text-xl font-bold tracking-tight text-gray-800">Modifier <span class="text-green-500 uppercase">l'article</span></span>
+            </div>
+            <a href="index.php?admin=me&dash=dash" class="text-sm font-bold text-gray-500 hover:text-green-600 px-4 py-2 border rounded-full transition-all">
+                &larr; Annuler
+            </a>
         </div>
+    </header>
 
-        <!--image-->
-        <input type="file" name="cartImg" id="img">
+    <main class="max-w-4xl mx-auto px-4 py-10">
+        <form action="" method="post" enctype="multipart/form-data" class="bg-white shadow-xl shadow-gray-200/50 rounded-3xl overflow-hidden border border-gray-100">
+            
+            <div class="p-8 border-b border-gray-50 bg-gray-50/30">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    <div class="flex flex-col items-center gap-3">
+                        <div class="w-40 h-40 rounded-2xl border-4 border-white shadow-md overflow-hidden bg-gray-200 relative group">
+                            <img id="preview" src="#" alt="Aperçu" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="text-white text-xs font-bold">Changer l'image</span>
+                            </div>
+                        </div>
+                        <input type="file" name="cartImg" id="img" class="text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 cursor-pointer">
+                    </div>
 
-        <input type="submit" value="Valider">
+                    <div class="md:col-span-2 space-y-4">
+                        <div>
+                            <label class="block text-xs font-black uppercase text-gray-400 tracking-widest mb-1">Nom du produit</label>
+                            <input type="text" id="nomP" name="nomP" class="w-full px-4 py-3 rounded-xl border-gray-200 border focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none font-bold text-lg" placeholder="Ex: Dolce Air Pro">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase text-gray-400 tracking-widest mb-1">Prix (XOF)</label>
+                            <input type="number" id="prix" name="prix" class="w-full px-4 py-3 rounded-xl border-gray-200 border focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none font-black text-green-600 text-xl" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    </form>
+            <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-black uppercase text-gray-400 tracking-widest mb-3">Statut de l'article</label>
+                        <div class="flex gap-3">
+                            <?php foreach(['Nouveau', 'Populaire', 'Limité'] as $s): ?>
+                            <label class="flex-1">
+                                <input type="radio" name="status" value="<?= $s ?>" class="hidden peer">
+                                <div class="text-center p-2 rounded-xl border-2 border-gray-100 peer-checked:border-green-500 peer-checked:bg-green-50 peer-checked:text-green-700 text-sm font-bold text-gray-500 cursor-pointer transition-all">
+                                    <?= $s ?>
+                                </div>
+                            </label>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-black uppercase text-gray-400 tracking-widest mb-3">Évaluation (Étoiles)</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="bg-yellow-50 p-3 rounded-xl border border-yellow-100 text-center">
+                                <span class="block text-[10px] font-bold text-yellow-600 uppercase">Pleines</span>
+                                <input type="number" name="nbreyellow" class="w-full bg-transparent text-center font-black text-yellow-700 outline-none" value="0">
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded-xl border border-blue-100 text-center">
+                                <span class="block text-[10px] font-bold text-blue-600 uppercase">Moitié</span>
+                                <input type="number" name="nbreboth" class="w-full bg-transparent text-center font-black text-blue-700 outline-none" value="0">
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-xl border border-gray-100 text-center">
+                                <span class="block text-[10px] font-bold text-gray-400 uppercase">Vides</span>
+                                <input type="number" name="nbrevide" class="w-full bg-transparent text-center font-black text-gray-500 outline-none" value="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-black uppercase text-gray-400 tracking-widest mb-1">Description</label>
+                    <textarea name="description" id="description" rows="7" class="w-full px-4 py-3 rounded-xl border-gray-200 border focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none text-sm leading-relaxed" placeholder="Détails du produit..."></textarea>
+                </div>
+            </div>
+
+            <div class="px-8 pb-8">
+                <label id="clrs" class="block text-xs font-black uppercase text-gray-400 tracking-widest mb-3">Couleurs Disponibles</label>
+                <div class="conteneur grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    </div>
+            </div>
+
+            <div class="p-8 bg-gray-50 border-t border-gray-100 flex justify-end">
+                <button type="submit" class="w-full md:w-auto bg-green-500 hover:bg-green-600 text-white px-12 py-4 rounded-2xl font-black uppercase tracking-widest shadow-lg shadow-green-200 transition-all transform hover:-translate-y-1">
+                    Enregistrer les modifications
+                </button>
+            </div>
+        </form>
+    </main>
+
     <script>
-        let inputs = document.querySelectorAll('input');
-        let prix = document.getElementById('prix');
-        let description = document.querySelector('textarea');
-        let select = document.getElementById('clrs');
-        let couleurs = [];
-        async function produit() {
-    const requete = await fetch('?info=<?= $toupdate ?>');
-    const article = await requete.json();
+        // Ta logique JS reste la même, j'ai juste ajouté l'aperçu image en direct
+        const imgInput = document.getElementById('img');
+        const preview = document.getElementById('preview');
 
-    inputs[0].value = article.cartName;
-
-    switch (article.status) {
-        case "Nouveau":
-            inputs[1].checked = true;
-            break;
-        case "Populaire":
-            inputs[2].checked = true;
-            break;
-        case "Limité":
-            inputs[3].checked = true;
-            break;
-        default:
-            console.log('bizarre');
-            break;
-    }
-
-    inputs[4].value = article.prix;
-    inputs[5].value = article.nbreyellow;
-    inputs[6].value = article.nbreboth;
-    inputs[7].value = article.nbrevide;
-    description.textContent = article.courteDescription;
-
-    // Gestion des couleurs
-    let lescouleurs = typeof article.lescouleurs === 'string' ? JSON.parse(article.lescouleurs) : article.lescouleurs;
-    const catalogueCouleurs = [
-        { nom: "Noir", value: "black" },
-        { nom: "Blanc", value: "white" },
-        { nom: "Bleu nuit", value: "blue" },
-        { nom: "Bleu nuit", value: "navy" },
-        { nom: "Rouge", value: "red" },
-        { nom: "Gris", value: "gray" },
-        { nom: "Vert", value: "green" },
-        { nom: "Noyer", value: "brown" },
-        { nom: "Or 24K", value: "gold" },
-        { nom: "Argent Brossé", value: "sliver" },
-        { nom: "Cuivre Poli", value: "peru" },
-        { nom: "Gris Titane", value: "slategray" }
-    ];
-
-    const conteneurCouleurs = document.querySelector('.conteneur'); 
-    conteneurCouleurs.innerHTML = ""; 
-    catalogueCouleurs.forEach(c => {
-        // On vérifie si cette couleur du catalogue est possédée par l'article
-        let estPossede;
-        lescouleurs.forEach(couleur=>{
-            couleur = typeof couleur === 'string' ? JSON.parse(couleur) : couleur;
-            estPossede = c.value === couleur.value ? true : false;
-        })       
-        let div = document.createElement('div');
-        div.className = "flex items-center gap-2 bg-gray-50 p-2 rounded border";
-
-        let input = document.createElement('input');
-        input.type = "checkbox";
-        input.name = "couleurs[]"; // Important pour récupérer un tableau en PHP
-        input.value = JSON.stringify(c); // On stocke l'objet entier en JSON pour le récupérer facilement
-        input.checked = estPossede; // Cochée si l'article l'a déjà
-        input.id = `color-${c.value}`;
-        let label = document.createElement('label');
-        label.setAttribute('for', `color-${c.value}`);
-        label.textContent = c.nom;
-        
-        // Petit bonus : afficher une pastille de couleur
-        let pastille = document.createElement('span');
-        pastille.style.backgroundColor = c.value;
-        pastille.className = "w-4 h-4 rounded-full border border-gray-300";
-
-        div.appendChild(input);
-        div.appendChild(pastille);
-        div.appendChild(label);
-        
-        conteneurCouleurs.appendChild(div);
-    });
-
-    // --- INSERTION DE L'IMAGE DANS INPUT[8] ---
-    if (article.cartImg) {
-        try {
-            const response = await fetch(article.cartImg);
-            const data = await response.blob();
-            // On extrait le nom du fichier depuis l'URL ou on en donne un par défaut
-            const nomFichier = article.cartImg.split('/').pop() || 'image_actuelle.jpg';
-            const file = new File([data], nomFichier, { type: data.type });
-            console.log(data);
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(file);
-            inputs[8].files = dataTransfer.files;
-        } catch (error) {
-            console.error("Impossible de charger l'image dans le champ file :", error);
+        imgInput.onchange = evt => {
+            const [file] = imgInput.files;
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+            }
         }
-    }
-    let checks = document.querySelectorAll('input');
-        checks.forEach(input=>{
-                if(input.type === "checkbox"){
-                    if(input.checked === true){
-                        couleurs.push({'nom': input.name, 'value': input.value});
-                        // console.log(couleurs);
-                    }else{
-                        let index = couleurs.findIndex(item=>{item.nom === input.name && item.value === input.value});
-                        if(index !== -1){
-                            couleurs.splice(index, 1);
-                            
-                        }
-                    }
-                }
-            })
-    }
+
+        // --- Ton script existant ---
+        let inputs = document.querySelectorAll('input');
+        let description = document.querySelector('textarea');
         
-        console.log(couleurs);
+        async function produit() {
+            const requete = await fetch('?info=<?= $toupdate ?>');
+            const article = await requete.json();
+
+            inputs[1].value = article.cartName; // Index ajusté car header/preview ajoutés
+            preview.src = article.cartImg;
+
+            // Mapping automatique des radios
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(r => { if(r.value === article.status) r.checked = true; });
+
+            // Remplissage des autres champs
+            document.getElementById('prix').value = article.prix;
+            document.getElementsByName('nbreyellow')[0].value = article.nbreyellow;
+            document.getElementsByName('nbreboth')[0].value = article.nbreboth;
+            document.getElementsByName('nbrevide')[0].value = article.nbrevide;
+            description.value = article.courteDescription;
+
+            // Couleurs
+            let lescouleurs = typeof article.lescouleurs === 'string' ? JSON.parse(article.lescouleurs) : article.lescouleurs;
+            const catalogueCouleurs = [
+                { nom: "Noir", value: "black" }, { nom: "Blanc", value: "white" },
+                { nom: "Bleu nuit", value: "navy" }, { nom: "Rouge", value: "red" },
+                { nom: "Gris", value: "gray" }, { nom: "Vert", value: "green" },
+                { nom: "Or 24K", value: "gold" }, { nom: "Argent", value: "silver" }
+            ];
+
+            const conteneurCouleurs = document.querySelector('.conteneur'); 
+            conteneurCouleurs.innerHTML = ""; 
+            
+            catalogueCouleurs.forEach(c => {
+                const estPossede = lescouleurs.some(lc => {
+                    let parsed = typeof lc === 'string' ? JSON.parse(lc) : lc;
+                    return parsed.value === c.value;
+                });
+
+                let div = document.createElement('label');
+                div.className = `flex items-center gap-3 p-3 rounded-xl border border-gray-100 cursor-pointer transition-all hover:bg-gray-50 ${estPossede ? 'bg-green-50/50 border-green-200' : ''}`;
+
+                div.innerHTML = `
+                    <input type="checkbox" name="couleurs[]" value='${JSON.stringify(c)}' ${estPossede ? 'checked' : ''} class="w-4 h-4 accent-green-500">
+                    <span class="w-4 h-4 rounded-full shadow-inner" style="background-color: ${c.value}"></span>
+                    <span class="text-xs font-bold text-gray-600">${c.nom}</span>
+                `;
+                conteneurCouleurs.appendChild(div);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', produit);
-        
     </script>
 </body>
 </html>

@@ -73,7 +73,7 @@ burger.addEventListener('click', ()=>{
         let divfil1 = document.createElement('div');
         divfil1.className='bg-gray-500/20 w-full rounded-t-[15px] p-2';
         let img = document.createElement('img'); 
-        img.src ='../imagesuploade/'+cartImg;
+        img.src =cartImg;
         img.className = "image w-full h-[150px] object-cover bg-gray-300"; 
         img.alt = "Chargement...";
         divfil1.insertAdjacentElement('afterbegin', img);
@@ -133,21 +133,18 @@ let acheters =  localStorage.getItem('acheters') != null ? JSON.parse(localStora
 let quantite = document.querySelector('.quantite');
 quantite.innerHTML  = localStorage.getItem('nbreDequantite') != null ? parseInt(localStorage.getItem('nbreDequantite')) : 0;
 console.log(quantite.innerHTML);
-// console.log(acheters);
+console.log(acheters);
 async function boutique(categorie){
     let bgarticles = document.querySelectorAll('.bgarticles');
     for(index = 0; index<bgarticles.length; index++){
         categorie = disponibles[index];
-        const response = await fetch('?categorie='+categorie+'');//car le js est alors inclut dans home.php
+        const response = await fetch('?categorie='+categorie+'');
         const articles = await response.json();
               
             bgarticles[index].classList.add('flex','flex-wrap','gap-3','justify-center');
                     if (!bgarticles) return;
                     bgarticles[index].innerHTML = "";
-            if(articles.length === 0){
-                bgarticles[index].innerHTML = '<i class="fa-solid fa-magnifying-glass-minus"></i> Aucun article dans cette section.';
-                bgarticles[index].classList.add('text-[20px]', 'm-[15px]', 'items-center', 'min-h-[150px]');
-            }
+        
                     articles.forEach(item => {
                         let article = articleBulder(
                             item.id,
@@ -189,9 +186,8 @@ async function boutique(categorie){
                         check.innerHTML= "<img src='../images/afterpaye.png'>";
                         nbreDequantite++;
                         //console.log(nbreDequantite);
-                        quantite.innerHTML = nbreDequantite; 
-                        let defaut = "couleur présentée";       
-                        acheters.push({'nom':h3,'prix':prix, 'quantite':nbreVoulu, 'couleur': defaut});
+                        quantite.innerHTML = nbreDequantite;        
+                        acheters.push({'nom':h3,'prix':prix, 'quantite':nbreVoulu});
                         localStorage.setItem('acheters', JSON.stringify(acheters));
                         localStorage.setItem('nbreDequantite', quantite.innerHTML);
                         console.log(localStorage.getItem('nbreDequantite')); 
@@ -209,9 +205,9 @@ async function boutique(categorie){
                             acheters.splice(index, 1);
                             localStorage.setItem('acheters', JSON.stringify(acheters));
                             localStorage.setItem('nbreDequantite', quantite.innerHTML);
-                            // console.log(localStorage.getItem('nbreDequantite'));
-                            // console.log(JSON.parse(localStorage.getItem('acheters')));
-                            // console.log(acheters);
+                            console.log(localStorage.getItem('nbreDequantite'));
+                            console.log(JSON.parse(localStorage.getItem('acheters')));
+                            console.log(acheters);
                         }
                     }
                 })   
@@ -291,18 +287,18 @@ document.querySelector(".panier").addEventListener("click", () => {
 
         message += `${index + 1}. ${item.nom}\n`;
         message += `   Quantité : ${item.quantite}\n`;
-        message += `   Couleur : ${item.couleur}\n`;
         message += `   Prix : ${item.prix} XOF\n`;
         message += `   Sous-total : ${subTotal} XOF\n\n`;
     });
 
     message += `*Total à payer : ${total} XOF*\n\n`;
     message += "C'est quoi la prochaine étape?";
+
     // Encodage du message pour l’URL
     let encodedMessage = encodeURIComponent(message);
 
     // Numéro WhatsApp (sans + ni espaces , ni 01)
-    let numeroDeTelephone = "22994853019";
+    let numeroDeTelephone = "22943847968";
 
     // Ouverture WhatsApp
     window.open(
@@ -312,14 +308,3 @@ document.querySelector(".panier").addEventListener("click", () => {
 });
 //comment faire en sorte que un href ramène à un niveau precis donné
 //comment faire pour que la flèche vient que si l'on défile de 1+0.5 height
-
-
-
-
-
-
-
-
-
-
-
