@@ -107,6 +107,7 @@
     </main>
 
     <script>
+    
         // Ta logique JS reste la même, j'ai juste ajouté l'aperçu image en direct
         const imgInput = document.getElementById('img');
         const preview = document.getElementById('preview');
@@ -127,7 +128,7 @@
             const article = await requete.json();
 
             inputs[1].value = article.cartName; // Index ajusté car header/preview ajoutés
-            preview.src = article.cartImg;
+            preview.src = "imagesuploade/"+article.cartImg;
 
             // Mapping automatique des radios
             const radios = document.querySelectorAll('input[type="radio"]');
@@ -145,6 +146,7 @@
             const catalogueCouleurs = [
                 { nom: "Noir", value: "black" }, { nom: "Blanc", value: "white" },
                 { nom: "Bleu nuit", value: "navy" }, { nom: "Rouge", value: "red" },
+                { nom: "Gris Titane", value: "slategray" },
                 { nom: "Gris", value: "gray" }, { nom: "Vert", value: "green" },
                 { nom: "Or 24K", value: "gold" }, { nom: "Argent", value: "silver" }
             ];
@@ -155,7 +157,7 @@
             catalogueCouleurs.forEach(c => {
                 const estPossede = lescouleurs.some(lc => {
                     let parsed = typeof lc === 'string' ? JSON.parse(lc) : lc;
-                    return parsed.value === c.value;
+                    return parsed.value === c.value || parsed.nom === c.nom;
                 });
 
                 let div = document.createElement('label');

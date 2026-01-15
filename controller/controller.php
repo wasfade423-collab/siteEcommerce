@@ -80,6 +80,8 @@ class Compteur{
                         $target = "imagesuploade/" . basename($imageName);
                         move_uploaded_file($_FILES['cartImg']['tmp_name'], $target);
                     }
+                }else{
+                    $img = $model->getArticle($toupdate)['cartImg'];
                 }
         
                 //nous ajoutons un article
