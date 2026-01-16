@@ -72,16 +72,19 @@ class Compteur{
                     $couleurs = $_POST['couleurs'];
                 }            
                 if(isset($_FILES['cartImg'])){
-                    $imageName = $_FILES['cartImg']['name'];
-                    // Traitement de l'image
-                    $extension = pathinfo($imageName)['extension'];
-                    if($extension === "jpeg" || $extension === "jpg" || $extension === "png"){
-                        $img = basename($imageName);
-                        $target = "imagesuploade/" . basename($imageName);
-                        move_uploaded_file($_FILES['cartImg']['tmp_name'], $target);
+                    if($_FILES['cartImg']['error'] === UPLOAD_ERR_NO_FILE){
+                        $img = $model->getArticle($toupdate)['cartImg'];
                     }
-                }else{
-                    $img = $model->getArticle($toupdate)['cartImg'];
+                    else{
+                        $imageName = $_FILES['cartImg']['name'];
+                        // Traitement de l'image                        
+                        $extension = pathinfo($imageName)['extension'];
+                        if($extension === "jpeg" || $extension === "jpg" || $extension === "png"){
+                            $img = basename($imageName);
+                            $target = "imagesuploade/" . basename($imageName);
+                            move_uploaded_file($_FILES['cartImg']['tmp_name'], $target);
+                        }
+                    }
                 }
         
                 //nous ajoutons un article

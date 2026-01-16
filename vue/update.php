@@ -6,6 +6,7 @@
     <title>Update Page | Admin</title>
     <meta name="description" content ="site Ecommerce au Bénin">
     <link rel="stylesheet" href="../css/sortie.css">
+    <link rel="icon" type="imag/x-icon" href="favicon.ico">
 </head>
 
 <body class="bg-gray-50 font-sans antialiased">

@@ -6,6 +6,7 @@
     <title>Add article Page | Admin</title>
     <meta name="description" content ="site Ecommerce au Bénin">
     <link rel="stylesheet" href="../css/sortie.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body class="bg-gray-50 font-sans antialiased">
 
@@ -44,17 +45,17 @@
                                 </svg>
                             </div>
                         </div>
-                        <input type="file" name="cartImg" id="img" required class="text-[10px] text-gray-400 file:bg-green-50 file:text-green-700 file:border-0 file:rounded-full file:px-3 file:py-1 file:font-bold cursor-pointer">
+                        <input type="file" required name="cartImg" id="img" required class="text-[10px] text-gray-400 file:bg-green-50 file:text-green-700 file:border-0 file:rounded-full file:px-3 file:py-1 file:font-bold cursor-pointer">
                     </div>
 
                     <div class="md:col-span-2 space-y-4">
                         <div>
                             <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest mb-1">Nom du produit</label>
-                            <input type="text" name="nomP" id="nomP" required class="w-full px-5 py-3 rounded-xl border-gray-100 border-2 focus:border-green-500 outline-none font-bold" placeholder="Ex: Dolce Bass X1">
+                            <input type="text" required name="nomP" id="nomP" required class="w-full px-5 py-3 rounded-xl border-gray-100 border-2 focus:border-green-500 outline-none font-bold" placeholder="Ex: Dolce Bass X1">
                         </div>
                         <div>
                             <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest mb-1">Prix (XOF)</label>
-                            <input type="number" name="prix" id="prix" required class="w-full px-5 py-3 rounded-xl border-gray-100 border-2 focus:border-green-500 outline-none font-black text-green-600 text-xl" placeholder="0">
+                            <input type="number" required name="prix" id="prix" required class="w-full px-5 py-3 rounded-xl border-gray-100 border-2 focus:border-green-500 outline-none font-black text-green-600 text-xl" placeholder="0">
                         </div>
                     </div>
                 </div>
@@ -67,7 +68,7 @@
                         <div class="flex gap-2">
                             <?php foreach(['Nouveau', 'Populaire', 'Limité'] as $status): ?>
                                 <label class="flex-1">
-                                    <input type="radio" name="status" value="<?= $status ?>" required class="hidden peer">
+                                    <input type="radio" required name="status" value="<?= $status ?>" required class="hidden peer">
                                     <div class="text-center py-2 rounded-xl border-2 border-gray-50 bg-gray-50/50 peer-checked:border-green-500 peer-checked:bg-white peer-checked:text-green-600 font-bold text-gray-400 cursor-pointer transition-all">
                                         <?= $status ?>
                                     </div>
@@ -77,18 +78,18 @@
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest mb-3">Évaluation</label>
+                        <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest mb-3">Évaluation sur 5 étoiles</label>
                         <div class="grid grid-cols-3 gap-2">
-                            <input type="number" name="nbreyellow" placeholder="Jaunes" class="bg-gray-50 p-3 rounded-xl border border-gray-100 outline-none focus:border-yellow-400">
-                            <input type="number" name="nbreboth" placeholder="Demi" class="bg-gray-50 p-3 rounded-xl border border-gray-100 outline-none focus:border-green-400">
-                            <input type="number" name="nbrevide" placeholder="Vides" class="bg-gray-50 p-3 rounded-xl border border-gray-100 outline-none focus:border-gray-400">
+                            <input type="number" required name="nbreyellow" placeholder="Jaunes" class="bg-gray-50 p-3 rounded-xl border border-gray-100 outline-none focus:border-yellow-400">
+                            <input type="number" required name="nbreboth" placeholder="Demi" class="bg-gray-50 p-3 rounded-xl border border-gray-100 outline-none focus:border-green-400">
+                            <input type="number" required name="nbrevide" placeholder="Vides" class="bg-gray-50 p-3 rounded-xl border border-gray-100 outline-none focus:border-gray-400">
                         </div>
                     </div>
                 </div>
 
                 <div class="flex flex-col">
                     <label class="block text-[10px] font-black uppercase text-gray-400 tracking-widest mb-1">Description</label>
-                    <textarea name="description" id="description" class="flex-1 w-full p-4 rounded-xl border-gray-100 border-2 focus:border-green-500 outline-none resize-none text-gray-600" placeholder="Caractéristiques..."></textarea>
+                    <textarea name="description" required id="description" class="flex-1 w-full p-4 rounded-xl border-gray-100 border-2 focus:border-green-500 outline-none resize-none text-gray-600" placeholder="Caractéristiques..."></textarea>
                 </div>
             </div>
 
@@ -100,8 +101,8 @@
                     </div>
 
                     <div class="flex flex-wrap md:flex-nowrap gap-2 items-center border-t pt-4">
-                        <input type="text" id="new-color-name" placeholder="Nom de couleur" class="flex-1 border p-2 text-xs rounded-xl outline-none focus:border-green-500">
-                        <input type="color" id="new-color-value" class="h-9 w-12 cursor-pointer border-0 bg-transparent">
+                        <input type="text" required id="new-color-name" placeholder="Nom de couleur" class="flex-1 border p-2 text-xs rounded-xl outline-none focus:border-green-500">
+                        <input type="color" required id="new-color-value" class="h-9 w-12 cursor-pointer border-0 bg-transparent">
                         <button type="button" onclick="ajouterCouleurManuelle()" class="bg-gray-900 text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-green-600 transition-all">
                             + Ajouter
                         </button>

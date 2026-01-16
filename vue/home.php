@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../css/sortie.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="../css/style.css">
     <style>
         html{
@@ -420,7 +421,7 @@ document.querySelector(".panier").addEventListener("click", () => {
     let encodedMessage = encodeURIComponent(message);
 
     // Numéro WhatsApp (sans + ni espaces , ni 01)
-    let numeroDeTelephone = "229MOIMOI";
+    let numeroDeTelephone = "2290194853019";
 
     // Ouverture WhatsApp
     window.open(
