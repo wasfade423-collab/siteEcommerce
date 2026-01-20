@@ -22,7 +22,7 @@
 <body>
 <input type="hidden" id="index" value=<?= $_GET['id']?>>
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <nav class="flex items-center justify-between max-w-7xl mx-auto px-4 md:px-8 py-3">
+        <nav class="flex items-center max-md:gap-2 justify-between max-w-7xl mx-auto px-4 md:px-8 py-3">
                 <span class="flex items-center gap-3 group">
                     <div class="bg-green-500 p-2 rounded-xl shadow-lg shadow-green-200 transition-transform group-hover:scale-105">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -37,7 +37,7 @@
                             Acoustique de Luxe
                         </span>
                     </div>
-                    <div class="relative md:hidden sm:block w-55 lg:w-64">
+                    <div class="relative md:hidden sm:block w-[80%] lg:w-64">
                         <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </span>
