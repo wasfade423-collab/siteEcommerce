@@ -23,8 +23,8 @@
 <body class="relative overflow-x-hidden bg-gray-50 text-gray-900 font-sans">
 
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <nav class="flex items-center justify-between max-w-7xl mx-auto px-4 md:px-8 py-3">
-                <span class="flex items-center gap-3 group">
+        <nav class="flex items-center justify-between max-w-7xl mx-auto px-4 max-md:gap-2 md:px-8 py-3">
+            <span class="flex items-center gap-3 group">
                     <div class="bg-green-500 p-2 rounded-xl shadow-lg shadow-green-200 transition-transform group-hover:scale-105">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
@@ -38,19 +38,19 @@
                             Acoustique de Luxe
                         </span>
                     </div>
-                    <div class="relative md:hidden sm:block w-55 lg:w-64">
+                    <div class="relative md:hidden sm:block w-[80%] lg:w-64">
                         <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </span>
                         <input type="text" placeholder="Rechercher..." class="searchBar w-full pl-9 pr-4 py-2 bg-gray-100 border-none rounded-full focus:ring-2 focus:ring-emerald-400 focus:bg-white transition-all text-sm outline-none">
                     </div>                    
-                </span>
+            </span>
             <div class="flex navigation max-md:flex-col gap-8 text-gray-700 max-md:absolute z-1000 transition-all duration-500 top-0 max-md:-translate-x-100 p-4 max-md:bg-white max-md:w-3/4">
                 <a href="" class="hover:text-emerald-500 transition-colors">Home</a>
                 <a href="#articles" class="hover:text-emerald-500 transition-colors">Shop</a>
             </div>
 
-            <div class="flex items-center gap-3 md:gap-5">
+            <div class="flex items-center gap-2 md:gap-5">
                 <div class="relative hidden sm:block w-48 lg:w-64">
                     <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
